@@ -10,8 +10,7 @@ import './App.css';
 class App extends Component {
 
   state = {
-    books : [],
-    shelf :''
+    book : []
   }
 //lifecycle event get data from Api
 //to get all book from server
@@ -42,7 +41,7 @@ moveBook = (book, shelf) => {
       <div className="App">
        <BookShelf
         onMoveBook={this.moveBook}
-        booksOnShelf = {this.state.books}
+        booksOnShelf = {this.state.book}
        />
 
 

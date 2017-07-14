@@ -19,10 +19,10 @@ render(){
                 <div>
                 <div>
                <div className = "bookshelf">
-               <h2 className = "bookshelf-title">shelvesName[index]</h2>
+               <h2 className = "bookshelf-title">{shelvesName[index]}</h2>
                <div className = "bookshelf-books">
                  <ol className = "books-grid">
-                 {this.props.booksOnShelf}.sort(sortBy('title'))
+                 {this.props.booksOnShelf.sort(sortBy('title'))
                  .filter(book => book.shelf === shelf).map(book =>(
                    <Book
                    onMoveBook={this.props.onMoveBook}
@@ -31,6 +31,7 @@ render(){
                     />
                  )
                  )
+               }
               </ol>
                </div>
                </div>
