@@ -1,7 +1,16 @@
 
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
+
 
 class Book extends Component{
+
+
+  static propTypes = {
+    book: PropTypes.object.isRequired,
+    onMoveBook: PropTypes.func.isRequired
+  }
+
 
   updateBook(shelf) {
     this.props.onMoveBook(this.props.book, shelf)
@@ -15,7 +24,7 @@ const {book} = this.props
            <div className = "book">
            <div className = "book-top">
            <div className = "book-cover"
-           style = {{ height:192, width:128, backgroundImage:`url("' + book.imageLinks.thumbnail + '")`  }}></div>
+           style = {{ height:192, width:128, backgroundImage: `url(${book.imageLinks !== undefined ? book.imageLinks.thumbnail: ''})`  }}></div>
          <div className = "book-shelf-changer">
          <select value= {book.shelf}  onChange = {(e) =>  this.updateBook(e.target.value)
          } >
@@ -31,8 +40,8 @@ const {book} = this.props
 
 
 
-           <div className = "book-title"> {this.props.book.title}</div>
-            <div className = "book-authors"> {this.props.book.authors}</div>
+           <div className = "book-title"> {book.title}</div>
+            <div className = "book-authors"> {book.authors}</div>
             </div>
 
   )

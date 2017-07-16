@@ -12,6 +12,8 @@ class Search extends Component {
     onMoveBook: PropTypes.func.isRequired
   }
 
+
+
   state = {
     query: '',
     books: []
@@ -23,9 +25,7 @@ class Search extends Component {
     } else {
       this.setState({ query: query.trim() })
       BooksAPI.search(query).then((books) => {
-        if (books.error) {
-          books = []
-        }
+
         books.map(book => (this.props.booksOnShelf.filter((b) => b.id === book.id).map(b => book.shelf = b.shelf)))
         this.setState({books})
       })
@@ -53,7 +53,7 @@ class Search extends Component {
                   .map(book => (
                     <Book
                       onMoveBook={this.props.onMoveBook}
-                      key={book.id}
+                      //key={book.id}
                       book={book}
                     />
                   ))
