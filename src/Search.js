@@ -25,7 +25,9 @@ class Search extends Component {
     } else {
       this.setState({ query: query.trim() })
       BooksAPI.search(query).then((books) => {
-
+        if (books.error) {
+          books = []
+        }
         books.map(book => (this.props.booksOnShelf.filter((b) => b.id === book.id).map(b => book.shelf = b.shelf)))
         this.setState({books})
       })
