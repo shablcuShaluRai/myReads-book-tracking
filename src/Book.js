@@ -7,11 +7,14 @@ class Book extends Component{
 
 
   static propTypes = {
+    // propTypes allows us to do is it allows us to specify the  specific types of the props that are passing
+    //into specific component  and we also are allowed to specify if thery are required or not .
+    //if we are not passing data as propTypes required , then it throws an error on console  and  app will not work.
     book: PropTypes.object.isRequired,
     onMoveBook: PropTypes.func.isRequired
   }
 
-
+// it update the shelf of the book
   updateBook(shelf) {
     this.props.onMoveBook(this.props.book, shelf)
   }
@@ -26,6 +29,8 @@ const {book} = this.props
            <div className = "book-cover"
            style = {{ height:192, width:128, backgroundImage: `url(${book.imageLinks !== undefined ? book.imageLinks.thumbnail: ''})`  }}></div>
          <div className = "book-shelf-changer">
+         {/*  e.target.value:A refrence too the object that dispatched the event */}
+         {/*value  contains shelf of book.*/}
          <select value= {book.shelf}  onChange = {(e) =>  this.updateBook(e.target.value)
          } >
           <option value = "" disabled > Move To...</option>
@@ -39,6 +44,7 @@ const {book} = this.props
 
 
 
+          {/* it returns the title and author of  the books. */}
 
            <div className = "book-title"> {book.title}</div>
             <div className = "book-authors"> {book.authors}</div>
