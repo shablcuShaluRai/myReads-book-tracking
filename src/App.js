@@ -67,7 +67,7 @@ moveBook = (book, shelf) => {
           />
 
       )}/>
-      /*when the path matches with /Search then it reners the search page.*/
+      {/*when the path matches with /Search then it reners the search page.*/}
       <Route path="/Search" render={() => (
         <Search
           onMoveBook={this.moveBook}
